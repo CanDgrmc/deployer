@@ -6,17 +6,19 @@ module.exports = class {
 
     constructor({
         log,
-        config
+        config,
+        repoPath
     }) {
         this.log = log
         this.config = config
+        this.repoPath = repoPath
     }
 
-    async clone(repoPath) {
-        await this.cloneRepository(repoPath)
+    async clone() {
+        await this.cloneRepository()
     }
 
-    async cloneRepository(repoPath) {
-        await git.clone(repoPath, [this.config.localPath])
+    async cloneRepository() {
+        await git.clone(this.repoPath, [this.config.localPath])
     }
 }
